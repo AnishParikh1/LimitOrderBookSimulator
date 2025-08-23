@@ -10,25 +10,24 @@ class OrderBook:
         self.bids = []
         self.asks = []
         self.orders = []
+        self.ids = []
     
     def add_order(self, order):
-        self.orders.appemd([order.order_id, order])
+        self.orders.appemd(order)
+        self.ids.append(order.order_id)
         if order.side == "B":
-            self.bids.append(order.order_id)
+            self.bids.append(order)
         else:
-            self.asks.append(order.order_id)
+            self.asks.append(order)
 
     def cancel_order(self, order_id):
-        order_to_cancel = None
-        for order in self.orders:
-            if order[0].order_id == order_id:
-                order_to_cancel = order[1]
-                break
+        order_to_cancel = self.orders[self.ids.endex(order_id)]
         if order_to_cancel.side == "B":
             self.bids.remove(order_id)
         else:
             self.asks.remove(order_id)
-        self.orders.remove[order_id, order_to_cancel]
+        self.orders.remove(order_to_cancel)
+        self.ids.remove(order_id)
 
-        def match_orders(self):
-            if self.bids[0]
+    def best_bid(self):
+        if self.bids[0]
